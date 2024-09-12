@@ -1,9 +1,9 @@
 # API Test Bug report
 
 1. Create endpoint allows for empty body to be sent
-**-Priority: medium**
-**-Severity: low**
-**-expected result: a 400 bad request error. api endpoint needs better validation**
+- **Priority: medium**
+- **Severity: low**
+- **expected result: a 400 bad request error. api endpoint needs better validation**
 curl to reproduce issue
 ```
 curl -X 'POST' \
@@ -26,6 +26,6 @@ curl -X 'POST' \
 - click on the cart icon on the top right
 -  click checkout and enter user details
 - click continue then finish
-**Expected result:** the user should bit be abke to click checkout if the cart is empty
-**Actual result:** the user is able to complete the checkout flow  with an empty cart
+- **Expected result:** the user should bit be abke to click checkout if the cart is empty
+- **Actual result:** the user is able to complete the checkout flow  with an empty cart
 
