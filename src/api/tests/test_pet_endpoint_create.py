@@ -22,7 +22,6 @@ class TestPetEndpointCreate:
         response = api_request.post(self.endpoint, 
                                     headers=headers,
                                     data=json.dumps(pet))
-        print(f"Full URL: {response.url}")  # Add this line
 
         assert response.ok, f"Expected OK response, got {response.status} {response.status_text}"
         response_body = response.json()
@@ -51,7 +50,6 @@ class TestPetEndpointCreate:
         response = api_request.post(self.endpoint, 
                                     headers=headers,
                                     data=json.dumps({}))
-        print(f"Full URL: {response.url}")  # Add this line
 
         assert response.status == 200
         

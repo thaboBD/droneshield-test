@@ -9,7 +9,6 @@ def before_each_test(page: Page, base_url: str):
     page.goto(base_url)
     login_page = LoginPage(page)
     login_page.login('standard_user', 'secret_sauce')
-    # Wait for the inventory page to load
     page.wait_for_selector('.inventory_list')
     yield page
     
@@ -18,14 +17,10 @@ def test_product_filtering_price_low_to_high(page: Page, base_url: str):
     inventory_page = InventoryPage(page)
     
     expect(page).to_have_url(f'{base_url}inventory.html')
-    
-    initial_prices = inventory_page.get_item_prices()
-    print(f"Initial prices: {initial_prices}")
-    
+        
     inventory_page.filter_products(ProductFilterOptions.PRICE_LOW_TO_HIGH)
     
     filtered_prices = inventory_page.get_item_prices()
-    print(f"Filtered prices: {filtered_prices}")
     
     assert filtered_prices == sorted(filtered_prices), f"Prices are not sorted from low to high. Actual prices: {filtered_prices}"
 

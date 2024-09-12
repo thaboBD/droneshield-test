@@ -1,0 +1,53 @@
+name: Manual Test Execution with Docker
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_type:
+        description: 'Type of tests to run'
+        required: true
+        default: 'both'
+        type: choice
+        options:
+        - both
+        - api
+        - ui
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Build Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: false
+        load: true
+        tags: test-runner:latest
+
+    - name: Run API tests
+      if: ${{ github.event.inputs.test_type == 'api' || github.event.inputs.test_type == 'both' }}
+      run: docker run --rm test-runner:latest pytest -v -m api --browser chromium
+
+    - name: Run UI tests
+      if: ${{ github.event.inputs.test_type == 'ui' || github.event.inputs.test_type == 'both' }}
+      run: docker run --rm test-runner:latest pytest -v -m ui --browser chromium
+
+    - name: Copy test results from container
+      if: failure()
+      run: |
+        docker create --name temp test-runner:latest
+        docker cp temp:/app/test-results ./test-results
+        docker rm temp
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: test-results
+        path: test-results/

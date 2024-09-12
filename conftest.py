@@ -26,7 +26,6 @@ def page(browser: Browser, request) -> Page:
 @pytest.fixture(scope="session")
 def api_base_url(request) -> str:
     base_url = request.config.getini('api_base_url')
-    print(f"API Base URL from ini file: {base_url}")  # Add this line
     return base_url
 
 @pytest.fixture(scope="session")
