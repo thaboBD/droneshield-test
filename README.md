@@ -37,17 +37,17 @@ Copy
 Make sure your virtual environment is activated before running tests.
 
 - To run all tests:
-`pytest`
+```pytest```
 - To run only API tests:
-`pytest -m api`
+```pytest -m api```
 
 - To run only UI tests:
-`pytest -m ui`
+  ```pytest -m ui```
 
 - To run tests with detailed output:
-`pytest -v`
+```pytest -v```
 
 ## Deactivating the Virtual Environment
 
 When you're done, you can deactivate the virtual environment:
-`deactivate`
+```deactivate```
