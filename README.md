@@ -2,7 +2,7 @@
 
 This project contains automated tests for API and UI. It uses pytest and Playwright for testing.
 
-**Playwright was chosen as the framework because it is easy to setup, and east to manage the browsers. Playwrigh also has auto waiting and better handling of dyanmic content allowing for easier automation of UIs built in React, Angular, Vue with less boiler plate code being written**
+**Playwright was selected as the framework due to its ease of setup and browser management. Its automatic waiting and handling of dynamic content make it ideal for automating UIs built with React, Angular, or Vue. This reduces the need for boilerplate code and simplifies the automation process.**
 
 ## Prerequisites
 
