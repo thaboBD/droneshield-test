@@ -56,3 +56,10 @@ Make sure your virtual environment is activated before running tests.
 
 When you're done, you can deactivate the virtual environment:
 ```deactivate```
+
+## Running tests in CI
+The tests can be run using github workflows. currently the run is triggerred manually and ran in a Docker container.
+
+- To run the test click on the actions tab in the Repo or navigate to https://github.com/thaboBD/droneshield-test/actions
+- Select the Manual Test Execution workflow on the right
+- Click run workflow and select whether you want to run the UI, API or both test suites
